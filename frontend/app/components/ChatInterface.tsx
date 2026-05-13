@@ -5,27 +5,23 @@ import { Send, MapPin, Plane, Loader2, Info } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
 
-interface Message {
+export interface Message {
   role: "user" | "agent";
   content: string;
   timestamp: string;
 }
 
 interface ChatProps {
+  messages: Message[];
+  addMessage: (msg: Message) => void;
   onTriggerPayment?: () => void;
 }
 
-export default function ChatInterface({ onTriggerPayment }: ChatProps) {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "agent",
-      content: "Welcome to LayoverOS. I am connected to the airport grid. How can I help you today?",
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    },
-  ]);
+export default function ChatInterface({ messages, addMessage, onTriggerPayment }: ChatProps) {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -41,13 +37,13 @@ export default function ChatInterface({ onTriggerPayment }: ChatProps) {
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
 
-    setMessages((prev) => [...prev, userMsg]);
+    addMessage(userMsg);
     setInput("");
     setIsLoading(true);
 
     try {
       // Connect to Real Backend
-      const res = await fetch("http://localhost:8000/chat", {
+      const res = await fetch(`${apiBaseUrl.replace(/\/$/, "")}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -63,7 +59,10 @@ export default function ChatInterface({ onTriggerPayment }: ChatProps) {
 
       // Auto-Trigger Logic
       if (aiResponse.includes("[PAYMENT_REQUIRED]")) {
-        aiResponse = aiResponse.replace("[PAYMENT_REQUIRED]", "");
+        // Strip the tag so it doesn't show in the UI bubble
+        const cleanResponse = aiResponse.replace("[PAYMENT_REQUIRED]", "");
+        aiResponse = cleanResponse; // Update the variable used for display
+
         if (onTriggerPayment) {
           setTimeout(() => onTriggerPayment(), 1500); // Small delay for effect
         }
@@ -75,17 +74,14 @@ export default function ChatInterface({ onTriggerPayment }: ChatProps) {
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
 
-      setMessages((prev) => [...prev, agentMsg]);
+      addMessage(agentMsg);
     } catch (error) {
       console.error(error);
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "agent",
-          content: "⚠️ Connection Lost. Check backend server.",
-          timestamp: new Date().toLocaleTimeString(),
-        },
-      ]);
+      addMessage({
+        role: "agent",
+        content: "⚠️ Connection Lost. Check backend server.",
+        timestamp: new Date().toLocaleTimeString(),
+      });
     } finally {
       setIsLoading(false);
     }

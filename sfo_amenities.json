@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Peet's Coffee",
+        "type": "cafe",
+        "terminal": "Terminal 2",
+        "desc": "Peet's Coffee is a cafe located at SFO airport. Famous for dark roasts.",
+        "lat": 37.617,
+        "lon": -122.383
+    },
+    {
+        "name": "United Club",
+        "type": "lounge",
+        "terminal": "Terminal 3",
+        "desc": "United Club is a lounge located at SFO airport. Near Gate F11.",
+        "lat": 37.619,
+        "lon": -122.385
+    },
+    {
+        "name": "Napa Farms Market",
+        "type": "restaurant",
+        "terminal": "Terminal 2",
+        "desc": "Napa Farms Market is a restaurant located at SFO airport. Farm-to-table food.",
+        "lat": 37.617,
+        "lon": -122.383
+    },
+    {
+        "name": "Centurion Lounge",
+        "type": "lounge",
+        "terminal": "Terminal 3",
+        "desc": "Centurion Lounge is a premium lounge for Amex cardholders.",
+        "lat": 37.618,
+        "lon": -122.384
+    },
+    {
+        "name": "Yoga Room",
+        "type": "amenity",
+        "terminal": "Terminal 2",
+        "desc": "Public Yoga Room for relaxation.",
+        "lat": 37.617,
+        "lon": -122.383
+    },
+    {
+        "name": "Restroom (Gate D3)",
+        "type": "amenity",
+        "terminal": "Terminal 2",
+        "desc": "Public Restroom near Gate D3.",
+        "lat": 37.617,
+        "lon": -122.383
+    },
+    {
+        "name": "Freshen Up",
+        "type": "amenity",
+        "terminal": "International G",
+        "desc": "Showers and Nap rooms.",
+        "lat": 37.615,
+        "lon": -122.388
+    },
+    {
+        "name": "The Coffee Bean & Tea Leaf",
+        "type": "cafe",
+        "terminal": "Terminal 3",
+        "desc": "Coffee and tea shop.",
+        "lat": 37.618,
+        "lon": -122.384
+    },
+    {
+        "name": "Burger Joint",
+        "type": "restaurant",
+        "terminal": "Terminal 2",
+        "desc": "Classic american burgers.",
+        "lat": 37.617,
+        "lon": -122.383
+    },
+    {
+        "name": "Duty Free Shop",
+        "type": "shop",
+        "terminal": "International G",
+        "desc": "Tax free shopping.",
+        "lat": 37.615,
+        "lon": -122.388
+    }
+]

@@ -14,17 +14,37 @@ export default function PaymentModal({ isOpen, onClose, onPay }: PaymentModalPro
     const [processing, setProcessing] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const handlePay = () => {
+    const handlePay = async () => {
         setProcessing(true);
-        setTimeout(() => {
+
+        try {
+            const res = await fetch("http://localhost:8000/pay", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    amount: 50.00,
+                    currency: "USDC",
+                    description: "United Club Pass"
+                })
+            });
+
+            if (res.ok) {
+                setProcessing(false);
+                setSuccess(true);
+                setTimeout(() => {
+                    onPay();
+                    setSuccess(false);
+                    onClose();
+                }, 2000);
+            } else {
+                alert("Payment Failed: Backend rejected transaction.");
+                setProcessing(false);
+            }
+        } catch (e) {
+            console.error("Payment Error:", e);
+            alert("Payment Error: Could not reach server.");
             setProcessing(false);
-            setSuccess(true);
-            setTimeout(() => {
-                onPay();
-                setSuccess(false);
-                onClose();
-            }, 2000);
-        }, 2000);
+        }
     };
 
     return (

@@ -3,7 +3,7 @@
 "use client";
 
 import Image from "next/image";
-import ChatInterface from "./components/ChatInterface";
+import ChatInterface, { Message } from "./components/ChatInterface";
 import FlightWidget from "./components/FlightWidget";
 import TerminalMap from "./components/TerminalMap";
 import PaymentModal from "./components/PaymentModal";
@@ -12,6 +12,18 @@ import React, { useState } from "react";
 
 export default function Home() {
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: "agent",
+      content: "Welcome to LayoverOS. I am connected to the airport grid. How can I help you today?",
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    },
+  ]);
+
+  const addMessage = (msg: Message) => {
+    setMessages((prev) => [...prev, msg]);
+  };
+
   return (
     <main className="min-h-screen bg-zinc-950 text-white relative overflow-hidden font-sans selection:bg-emerald-500/30">
 
@@ -94,7 +106,11 @@ export default function Home() {
 
           {/* Right Panel: The Agent */}
           <div className="lg:col-span-8 flex flex-col min-h-0">
-            <ChatInterface onTriggerPayment={() => setIsPaymentOpen(true)} />
+            <ChatInterface
+              messages={messages}
+              addMessage={addMessage}
+              onTriggerPayment={() => setIsPaymentOpen(true)}
+            />
           </div>
 
         </div>
@@ -104,8 +120,12 @@ export default function Home() {
         isOpen={isPaymentOpen}
         onClose={() => setIsPaymentOpen(false)}
         onPay={() => {
-          // Future: Call Bursar Node
-          console.log("Payment Confirmed");
+          // Add system confirmation message
+          addMessage({
+            role: "agent",
+            content: "✅ **Payment Confirmed.**\n\nYour Day Pass for the **United Club (Terminal 3)** is now active.\n\nSimply scan your face at the entrance (Biometric Auth enabled). Enjoy your stay.",
+            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          });
         }}
       />
     </main >
