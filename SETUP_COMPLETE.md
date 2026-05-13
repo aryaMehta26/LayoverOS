@@ -9,7 +9,7 @@
 ### 1. ✅ Code Owner Configuration
 ```
 ✓ Created: .github/CODEOWNERS file
-✓ Designated: @ShachiMistry as code owner for all files
+✓ Designated: @aryaMehta26 as code owner for all files
 ✓ Committed: Commit 63d926d
 ✓ Status: LIVE on main branch
 ```
@@ -50,7 +50,7 @@ TOTAL DOCS: 11 comprehensive guides (in addition to existing docs)
 ```
 ✅ Code Owner Configured
    └─ File: .github/CODEOWNERS
-   └─ Owner: @ShachiMistry (you)
+   └─ Owner: @aryaMehta26 (you)
    └─ Scope: All files in repository
 
 ✅ Ready for Branch Protection
@@ -68,7 +68,7 @@ TOTAL DOCS: 11 comprehensive guides (in addition to existing docs)
 ## 🔧 NEXT STEPS (What You Need to Do)
 
 ### Step 1: Access GitHub Settings
-Go to: https://github.com/ShachiMistry/LayoverOS/settings/branches
+Go to: https://github.com/aryaMehta26/LayoverOS/settings/branches
 
 ### Step 2: Create Branch Protection Rule
 ```
@@ -78,7 +78,7 @@ Enable:
   ✅ Require status checks to pass before merging
   ✅ Require branches to be up to date before merging
   ✅ Require code reviews from code owners
-  ✅ Restrict who can push (only you: @ShachiMistry)
+   ✅ Restrict who can push (only you: @aryaMehta26)
 ```
 
 ### Step 3: Save and Verify
@@ -104,10 +104,10 @@ Anyone → Push directly to main ❌
 Developer → Create Feature Branch
          → Push to Feature Branch
          → Create Pull Request
-         → @ShachiMistry gets notification
-         → @ShachiMistry reviews code
-         → @ShachiMistry approves
-         → @ShachiMistry merges to main
+         → @aryaMehta26 gets notification
+         → @aryaMehta26 reviews code
+         → @aryaMehta26 approves
+         → @aryaMehta26 merges to main
          → Feature deployed ✅
 
 Direct pushes to main → BLOCKED ✅
@@ -149,9 +149,9 @@ LayoverOS/
 | Create branch | ✅ Anyone | ✅ Anyone |
 | Push to feature branch | ✅ Anyone | ✅ Anyone |
 | Create PR | ✅ Anyone | ✅ Anyone |
-| **Push to main** | ✅ Anyone | ❌ Only @ShachiMistry |
-| **Merge PR to main** | ✅ Anyone | ❌ Only @ShachiMistry (+ review) |
-| **Approve PRs** | N/A | ✅ @ShachiMistry (required) |
+| **Push to main** | ✅ Anyone | ❌ Only @aryaMehta26 |
+| **Merge PR to main** | ✅ Anyone | ❌ Only @aryaMehta26 (+ review) |
+| **Approve PRs** | N/A | ✅ @aryaMehta26 (required) |
 | **Delete branch** | ✅ Anyone | ⚠️ Only after merge |
 
 ---
@@ -173,13 +173,13 @@ Developer → Create feature branch: git checkout -b feature/new-thing
          → GitHub shows: "Create Pull Request"
          → Developer creates PR
          → GitHub automatically:
-            ├─ Detects: @ShachiMistry as code owner
-            ├─ Sends: Notification to @ShachiMistry
+            ├─ Detects: @aryaMehta26 as code owner
+            ├─ Sends: Notification to @aryaMehta26
             └─ Blocks: Merge until approved
          
-         → @ShachiMistry reviews PR
-         → @ShachiMistry approves or requests changes
-         → After approval, @ShachiMistry merges
+         → @aryaMehta26 reviews PR
+         → @aryaMehta26 approves or requests changes
+         → After approval, @aryaMehta26 merges
          → Production deployment ✅
 ```
 
@@ -240,7 +240,7 @@ Developer → Create feature branch: git checkout -b feature/new-thing
 
 ### Action 1: Complete Branch Protection (5 minutes)
 ```
-Go to: https://github.com/ShachiMistry/LayoverOS/settings/branches
+Go to: https://github.com/aryaMehta26/LayoverOS/settings/branches
 Follow: GITHUB_SETUP_GUIDE.md
 Result: Main branch protected, only you can push
 ```
@@ -266,7 +266,7 @@ Show: How to contribute via feature branches
 ## 📊 Repository Statistics
 
 ```
-Code Owner: @ShachiMistry
+Code Owner: @aryaMehta26
 All Files: Protected
 Branches: main (protected)
          feature/* (anyone can create)
@@ -280,7 +280,7 @@ Status Checks: Configurable
 
 ## 💡 Pro Tips
 
-### For You (@ShachiMistry)
+### For You (@aryaMehta26)
 - You can still create branches without restrictions
 - Your own PRs also need approval (best practice)
 - Use branch protection for consistency
@@ -341,5 +341,5 @@ Your repository is now:
 ---
 
 *Generated: May 12, 2026*
-*Repository: https://github.com/ShachiMistry/LayoverOS*
+*Repository: https://github.com/aryaMehta26/LayoverOS*
 *Branch: main (protected after manual setup)*

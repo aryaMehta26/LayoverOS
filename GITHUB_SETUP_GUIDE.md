@@ -2,7 +2,7 @@
 
 ## ✅ Already Completed
 - CODEOWNERS file created and committed
-- All code now designated to: @ShachiMistry
+- All code now designated to: @aryaMehta26
 
 ---
 
@@ -11,7 +11,7 @@
 ### Option 1: Using GitHub Web UI (Recommended - 5 minutes)
 
 #### Step 1: Go to Repository Settings
-1. Navigate to: https://github.com/ShachiMistry/LayoverOS
+1. Navigate to: https://github.com/aryaMehta26/LayoverOS
 2. Click **Settings** (top menu)
 3. Click **Branches** (left sidebar)
 
@@ -36,7 +36,7 @@ Check these boxes:
 
 ✅ Restrict who can push to matching branches
    ├─ Select: Only allow specified people to push to matching branches
-   └─ Add: @ShachiMistry (yourself)
+   └─ Add: @aryaMehta26 (yourself)
 
 ✅ Lock branch
    └─ (Optional - prevents accidental commits)
@@ -59,16 +59,16 @@ brew install gh
 gh auth login
 
 # Create branch protection for main (only you can push)
-gh api repos/ShachiMistry/LayoverOS/branches/main/protection \
+gh api repos/aryaMehta26/LayoverOS/branches/main/protection \
   -X PUT \
   -f required_pull_request_reviews.required_approvals=1 \
   -f require_code_owner_reviews=true \
-  -f restrict_pushes.dismissal_restrictions.users='["ShachiMistry"]' \
+   -f restrict_pushes.dismissal_restrictions.users='["aryaMehta26"]' \
   -f restrict_pushes.dismiss_stale_reviews=true \
   -f enforce_admins=true
 
 # Verify the protection is set
-gh api repos/ShachiMistry/LayoverOS/branches/main/protection
+gh api repos/aryaMehta26/LayoverOS/branches/main/protection
 ```
 
 ---
@@ -79,7 +79,7 @@ gh api repos/ShachiMistry/LayoverOS/branches/main/protection
 |---------|--------|
 | **Require PR** | Nobody can commit directly to `main` |
 | **Require approvals** | Need at least 1 approval before merge |
-| **Code owner review** | @ShachiMistry (you) must approve all PRs |
+| **Code owner review** | @aryaMehta26 (you) must approve all PRs |
 | **Only you can push** | Only your GitHub account can push directly (if protection bypassed) |
 | **Stale reviews dismissed** | If new commits added, old approvals ignored |
 | **Status checks** | Automated tests must pass |
@@ -96,10 +96,10 @@ Anyone → Push to main ❌
 ### After (Protected)
 ```
 Anyone → Create PR
-        → CI checks run
-        → @ShachiMistry reviews
-        → @ShachiMistry approves
-        → Merge to main ✅
+   → CI checks run
+   → @aryaMehta26 reviews
+   → @aryaMehta26 approves
+   → Merge to main ✅
 ```
 
 ---
@@ -110,7 +110,7 @@ Anyone → Create PR
 Developer A wants to add feature:
 
 1. Clone repo
-   git clone https://github.com/ShachiMistry/LayoverOS.git
+   git clone https://github.com/aryaMehta26/LayoverOS.git
 
 2. Create feature branch
    git checkout -b feature/my-feature
@@ -125,10 +125,10 @@ Developer A wants to add feature:
    
 5. GitHub automatically:
    - Runs tests/checks
-   - Notifies @ShachiMistry (code owner)
-   - Requires approval from @ShachiMistry
+   - Notifies @aryaMehta26 (code owner)
+   - Requires approval from @aryaMehta26
    
-6. @ShachiMistry reviews on GitHub:
+6. @aryaMehta26 reviews on GitHub:
    - Click "Review changes"
    - Add comments if needed
    - Click "Approve"
@@ -142,10 +142,10 @@ Developer A wants to add feature:
 
 ## 🧑‍💼 How to Review PRs on GitHub
 
-### As Code Owner (@ShachiMistry)
+### As Code Owner (@aryaMehta26)
 
 #### When someone creates a PR:
-1. Go to: https://github.com/ShachiMistry/LayoverOS/pulls
+1. Go to: https://github.com/aryaMehta26/LayoverOS/pulls
 2. Click the PR
 3. Review the **Files changed** tab
 4. Click **Review changes** (top right)
@@ -165,15 +165,15 @@ If you need to bypass protection for an emergency:
 
 ```bash
 # Using GitHub CLI - Force push (requires admin)
-gh api repos/ShachiMistry/LayoverOS/branches/main/protection \
-  -X PATCH \
-  -f enforce_admins=false
+gh api repos/aryaMehta26/LayoverOS/branches/main/protection \
+   -X PATCH \
+   -f enforce_admins=false
 
 # Make your changes
 # Then re-enable:
-gh api repos/ShachiMistry/LayoverOS/branches/main/protection \
-  -X PATCH \
-  -f enforce_admins=true
+gh api repos/aryaMehta26/LayoverOS/branches/main/protection \
+   -X PATCH \
+   -f enforce_admins=true
 ```
 
 ---
@@ -184,8 +184,8 @@ gh api repos/ShachiMistry/LayoverOS/branches/main/protection \
 - [ ] Go to Repository Settings → Branches
 - [ ] Create rule for `main` branch
 - [ ] Enable all protection settings
-- [ ] Set only @ShachiMistry can push
-- [ ] Make @ShachiMistry required reviewer
+- [ ] Set only @aryaMehta26 can push
+- [ ] Make @aryaMehta26 required reviewer
 - [ ] Test by creating a test PR (don't merge without review)
 - [ ] Verify others cannot push directly to `main`
 
@@ -241,17 +241,17 @@ A: Edit `.github/CODEOWNERS` file and add their GitHub handle.
 
 ```
 # Frontend
-frontend/ @ShachiMistry @OtherPerson
+frontend/ @aryaMehta26 @OtherPerson
 
 # Backend
-agent_graph.py @ShachiMistry
-api.py @ShachiMistry
+agent_graph.py @aryaMehta26
+api.py @aryaMehta26
 
 # Docs
-*.md @ShachiMistry
+*.md @aryaMehta26
 
 # Everything else
-* @ShachiMistry
+* @aryaMehta26
 ```
 
 ---

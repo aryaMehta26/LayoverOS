@@ -1,11 +1,11 @@
 # This file specifies which users are code owners for this repository
 
 # All files in the repo
-* @ShachiMistry
+* @aryaMehta26
 
 # Specific critical files
-*.py @ShachiMistry
-*.tsx @ShachiMistry
-*.ts @ShachiMistry
-*.json @ShachiMistry
-frontend/ @ShachiMistry
+*.py @aryaMehta26
+*.tsx @aryaMehta26
+*.ts @aryaMehta26
+*.json @aryaMehta26
+frontend/ @aryaMehta26
