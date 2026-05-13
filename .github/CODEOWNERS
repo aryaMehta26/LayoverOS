@@ -1,0 +1,11 @@
+# This file specifies which users are code owners for this repository
+
+# All files in the repo
+* @ShachiMistry
+
+# Specific critical files
+*.py @ShachiMistry
+*.tsx @ShachiMistry
+*.ts @ShachiMistry
+*.json @ShachiMistry
+frontend/ @ShachiMistry
