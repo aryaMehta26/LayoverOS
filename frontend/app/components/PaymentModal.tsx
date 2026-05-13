@@ -22,9 +22,11 @@ export default function PaymentModal({ isOpen, onClose, onPay }: PaymentModalPro
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
+                    lounge_name: "United Club",
                     amount: 50.00,
                     currency: "USDC",
-                    description: "United Club Pass"
+                    description: "United Club Pass",
+                    user_id: "guest"
                 })
             });
 
