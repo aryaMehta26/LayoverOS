@@ -414,11 +414,18 @@ def supervisor_node(state: AgentState):
     if has_flight_keyword or has_flight_code or is_planning_trip:
         return {"next_step": "flight_tracker", "airport_code": found_airport} if found_airport else {"next_step": "flight_tracker"}
         
-    # 2. Check for Payment Intent
-    elif any(kw in last_message for kw in ["buy", "pay", "book", "purchase", "reserve"]):
+    # 2. Check for Lounge Name (booking intent)
+    # "United Club", "Centurion", "Freshen Up" -> Bursar for payment
+    lounge_keywords = ["united club", "centurion", "freshen up"]
+    has_lounge_mention = any(lounge in last_message.lower() for lounge in lounge_keywords)
+    
+    # 3. Check for Payment Intent (explicit booking keywords)
+    has_payment_keyword = any(kw in last_message for kw in ["buy", "pay", "book", "purchase", "reserve"])
+    
+    if has_lounge_mention or has_payment_keyword:
         return {"next_step": "bursar", "airport_code": found_airport} if found_airport else {"next_step": "bursar"}
         
-    # 3. Default: Amenity Search (The Safety Net)
+    # 4. Default: Amenity Search (The Safety Net)
     # "I am at SFO" -> Scout
     # "Where is coffee?" -> Scout
     else:
