@@ -1,24 +1,34 @@
 "use client";
 
-"use client";
-
 import Image from "next/image";
 import ChatInterface, { Message } from "./components/ChatInterface";
 import FlightWidget from "./components/FlightWidget";
 import TerminalMap from "./components/TerminalMap";
 import PaymentModal from "./components/PaymentModal";
 import { Zap, WifiOff, CreditCard } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Home() {
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "agent",
       content: "Welcome to LayoverOS. I am connected to the airport grid. How can I help you today?",
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      timestamp: "", // Will be set after hydration
     },
   ]);
+
+  // Set timestamp after hydration to avoid SSR mismatch
+  useEffect(() => {
+    setMounted(true);
+    setMessages((prev) => [
+      {
+        ...prev[0],
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      },
+    ]);
+  }, []);
 
   const addMessage = (msg: Message) => {
     setMessages((prev) => [...prev, msg]);
